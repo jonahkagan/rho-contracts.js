@@ -27,7 +27,7 @@ exports.privates = {};
 //
 
 function isMissing(v) { 
-  return __.isUndefined(v) || v === null;
+  return __.isUndefined(v);
 }
 
 function clone(obj) {

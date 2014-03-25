@@ -175,6 +175,7 @@ describe ("object", function () {
   it ("fails nested", function () { (function () { c.object({x: c.object({y: c.value(5)})}).check({x: { y: 10}}); }).should.throwContract(); });
   it ("fails missing field", function () { (function () { c.object({x: c.value(5), y:c.value(10)}).check({ x: 5, z: 10}); }).should.throwContract(); });
   it ("fails missing field, nested", function () { (function () { c.object({x: c.object({y: c.value(5)})}).check({x: { z: 10}}); }).should.throwContract(); });
+  it ("passes null field (null does not mean missing)", function () { c.object({x: c.value(null)}).check({x: null}).should.eql({x: null}); });
 
   it ("optional field missing", function () { c.object({x: c.value(5), y:c.optional(c.value(10))}).check({x: 5}).should.ok; });
   it ("optional field, passing", function () { c.object({x: c.value(5), y:c.optional(c.value(10))}).check({x: 5, y:10}).should.ok; });
